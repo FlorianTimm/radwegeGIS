@@ -9,7 +9,9 @@ import { bbox as bboxStrategy, all as allStrategy } from 'ol/loadingstrategy.js'
 import { Stroke, Style } from 'ol/style.js';
 import { register } from 'ol/proj/proj4.js';
 import proj4 from 'proj4';
-import Select from 'ol/interaction/Select.js'
+import Select from 'ol/interaction/Select.js';
+import GeoPart from './geoPart.js';
+import {never as neverCondition} from 'ol/events/condition.js'
 
 //proj4.defs("EPSG:31467", "+proj=tmerc +lat_0=0 +lon_0=9 +k=1 +x_0=3500000 +y_0=0 +ellps=bessel +towgs84=598.1,73.7,418.2,0.202,0.045,-2.455,6.7 +units=m +no_defs");
 proj4.defs("EPSG:25832", "+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
@@ -76,12 +78,12 @@ let select = new Select({
       color: 'rgba(255, 50, 50, 1)',
       width: 3
     })
-  })
+  }),
+  toggleCondition: neverCondition
 });
 map.addInteraction(select);
 
 map.getView().on('change:resolution', function (event) {
-  console.log(event);
   let zoom = event.target.getZoom();
   if (zoom > 16) {
     dop.setVisible(true);
@@ -96,3 +98,7 @@ map.getView().on('change:resolution', function (event) {
     geobasis.setVisible(true);
   }
 })
+
+
+let geoPart = new GeoPart(map, vector, select);
+geoPart.start();
