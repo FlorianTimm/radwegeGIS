@@ -1,8 +1,9 @@
 import Karte from "./Karte";
-import InfoTool from "./InfoTool";
+import InfoTool from "./Tools/InfoTool";
 import Control from "ol/control/Control";
 import "../css/ToolSwitcher.css";
 import EditTool from "./Tools/EditTool";
+import AddTool from "./Tools/AddTool";
 
 export default class ToolSwitcher extends Control {
     private buttons: { [text: string]: Tool };
@@ -19,6 +20,7 @@ export default class ToolSwitcher extends Control {
         this.buttons = {
             "Info": new InfoTool(map.getSelect()),
             "Bearbeiten": new EditTool(map.getSelect(), map),
+            "Neu": new AddTool(map.getSelect(), map, map.vectorLayer),
         }
 
         for (let b in this.buttons) {

@@ -1,5 +1,5 @@
 import Select, { SelectEvent } from 'ol/interaction/Select';
-import InfoTool from '../InfoTool';
+import InfoTool from './InfoTool';
 import { Modify } from 'ol/interaction';
 import { never } from 'ol/events/condition';
 import { ModifyEvent } from 'ol/interaction/Modify';

@@ -1,5 +1,5 @@
 import Select, { SelectEvent } from 'ol/interaction/Select';
-import { Tool } from "./ToolSwitcher";
+import { Tool } from "../ToolSwitcher";
 import { EventsKey } from 'ol/events';
 import { unByKey } from 'ol/Observable';
 
