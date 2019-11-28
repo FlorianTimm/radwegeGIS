@@ -1,0 +1,17 @@
+#ToolSwitcher {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+
+#ToolSwitcher button {
+    width: inherit;
+    padding: 4px;
+    background-color: grey;
+    float: left;
+    margin: 3px;
+}
+
+#ToolSwitcher .active {
+    background-color: green;
+}

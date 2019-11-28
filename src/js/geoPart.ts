@@ -2,6 +2,7 @@ import { Draw as DrawInteraction, Snap as SnapInteraction, Select, Snap } from '
 import { Map } from 'ol';
 import { Layer } from 'ol/layer';
 import GeometryType from 'ol/geom/GeometryType';
+import { SelectEvent } from 'ol/interaction/Select';
 
 export default class GeoPart {
     private __map: Map;
@@ -42,7 +43,7 @@ export default class GeoPart {
      * 
      * @param {ol.interaction.Select.Event} event 
      */
-    __select(event) {
+    __select(event: SelectEvent) {
         console.log(event.selected);
     }
 }
