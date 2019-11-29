@@ -5,6 +5,7 @@ import { DrawEvent } from "ol/interaction/Draw";
 import { Map } from "ol";
 import Karte from "../Karte";
 import VectorLayer from "ol/layer/Vector";
+import LineString from "ol/geom/LineString";
 
 export default class AddTool implements Tool {
     private select: Select;
@@ -22,6 +23,7 @@ export default class AddTool implements Tool {
         this.draw.on("drawend", function (this: AddTool, evt: DrawEvent) {
             this.select.getFeatures().clear();
             this.select.getFeatures().push(evt.feature);
+            console.log((evt.feature.getGeometry() as LineString).getCoordinates())
         }.bind(this))
     }
 

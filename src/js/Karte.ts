@@ -48,7 +48,7 @@ export default class Karte extends Map {
 
     private createDop() {
         let dop = new TileLayer({
-            opacity: 0.6,
+            opacity: 0.8,
             visible: false,
             source: new TileWMS({
                 url: 'https://geodienste.hamburg.de/HH_WMS_DOP_hochaufloesend?',

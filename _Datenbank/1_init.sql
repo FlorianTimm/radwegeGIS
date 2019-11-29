@@ -41,8 +41,20 @@ CREATE TABLE IF NOT EXISTS radverkehr.kt_richtung (
 	beschreibung text
 );
 
+CREATE TABLE IF NOT EXISTS radverkehr.kt_strassenname (
+	name_id UUID NOT NULL DEFAULT uuid_generate_v1() PRIMARY KEY,
+	bezeichnung varchar(200) NOT NULL UNIQUE,
+	strassenschluessel varchar (10)
+);
+
 CREATE TABLE IF NOT EXISTS radverkehr.kt_oberflaeche (
 	oberflaeche_id UUID NOT NULL DEFAULT uuid_generate_v1() PRIMARY KEY,
+	bezeichnung varchar(200) NOT NULL UNIQUE,
+	beschreibung text
+);
+
+CREATE TABLE IF NOT EXISTS radverkehr.kt_quelle (
+	quelle_id UUID NOT NULL DEFAULT uuid_generate_v1() PRIMARY KEY,
 	bezeichnung varchar(200) NOT NULL UNIQUE,
 	beschreibung text
 );
@@ -52,13 +64,16 @@ CREATE TABLE IF NOT EXISTS radverkehr.kt_oberflaeche (
 
 CREATE TABLE IF NOT EXISTS radverkehr.o_radweg (
 	radweg_id UUID NOT NULL DEFAULT uuid_generate_v1() PRIMARY KEY,
-	wegenummer varchar (6),
+	name_id UUID REFERENCES radverkehr.kt_strassenname(name_id),
 	laenge float,
 	radweg_art_id UUID REFERENCES radverkehr.kt_radweg_art(radweg_art_id),
 	richtung_id UUID REFERENCES radverkehr.kt_richtung(richtung_id),
 	oberflaeche_id UUID REFERENCES radverkehr.kt_oberflaeche(oberflaeche_id),
+	quelle_id UUID REFERENCES radverkehr.kt_quelle(quelle_id),
+	id_in_quelle varchar(100),
 	breite integer,
-	geometrie geometry(LINESTRINGM,25832) NOT NULL
+	bemerkung text,
+	geometrie geometry(LINESTRING,25832) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS radverkehr.o_radroute (

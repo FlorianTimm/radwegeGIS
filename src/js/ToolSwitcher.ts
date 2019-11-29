@@ -15,7 +15,7 @@ export default class ToolSwitcher extends Control {
         div.id = "ToolSwitcher"
         super({ element: div, target: document.getElementById('map') ?? undefined });
         this.div = div
-        document.body.append(this.div);
+        document.body.appendChild(this.div);
 
         this.buttons = {
             "Info": new InfoTool(map.getSelect()),
