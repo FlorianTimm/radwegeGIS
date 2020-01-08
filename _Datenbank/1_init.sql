@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS radverkehr.o_radweg (
 	richtung_id UUID REFERENCES radverkehr.kt_richtung(richtung_id),
 	oberflaeche_id UUID REFERENCES radverkehr.kt_oberflaeche(oberflaeche_id),
 	breite integer,
-	geometrie geometry(LINESTRINGM,25832) NOT NULL
+	geometrie geometry(LINESTRING,25832) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS radverkehr.o_radroute (

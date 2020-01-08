@@ -1,7 +1,7 @@
 truncate radverkehr.o_radweg CASCADE;
 alter table radverkehr.o_radweg add column old_id integer default null;
-insert into radverkehr.o_radweg (old_id, geometrie, laenge, richtung_id) 
-SELECT gid, ST_AddMeasure(ST_LineMerge(geom), 0, ST_Length(geom)), ST_Length(geom), (SELECT richtung_id FROM radverkehr.kt_richtung where bezeichnung = 'in Geometrie-Richtung') FROM radverkehr.velorouten;
+insert into radverkehr.o_radweg (old_id, geometrie, richtung_id) 
+SELECT gid, ST_LineMerge(geom), (SELECT richtung_id FROM radverkehr.kt_richtung where bezeichnung = 'in Geometrie-Richtung') FROM radverkehr.velorouten;
 
 truncate radverkehr.o_radroute CASCADE;						   
 insert into radverkehr.o_radroute (bezeichnung, beschreibung, hyperlink, klasse_id)

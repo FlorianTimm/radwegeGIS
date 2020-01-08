@@ -7,6 +7,7 @@ class GeoPart {
      * @param {ol.interaction.Select} selection Auswahl-Tool
      */
     constructor(map, layer, selection) {
+        map.add
         this.__map = map;
         this.__layer = layer;
         this.__selection = selection;
