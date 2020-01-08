@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "startServer": "parcel watch --out-dir \"//gv-srv-w00118/GlassFish Docroot/radwegeGIS\" --hmr-hostname localhost --public-url . src/*.html",
-	"buildServer": "parcel build --out-dir \"//gv-srv-w00118/GlassFish Docroot/radwegeGIS\" --public-url . src/*.html",
-	"start": "parcel src/*.html",
+    "buildServer": "parcel build --out-dir \"//gv-srv-w00118/GlassFish Docroot/radwegeGIS\" --public-url . src/*.html",
+    "start": "parcel src/*.html",
     "build": "parcel build --public-url . src/*.html"
   },
   "repository": {
@@ -28,15 +28,19 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "chosen-js": "^1.8.7",
-    "core-js": "^3.0.1",
-    "jquery": "^3.4.1",
+    "core-js": "^3.4.5",
     "jquery-ui": "^1.12.1",
     "jquery-ui-bundle": "^1.12.1-migrate",
-    "ol": "^5.3.2",
-    "proj4": "^2.5.0",
+    "ol": "^6.1.1",
+    "proj4": "^2.6.0",
     "regenerator-runtime": "^0.13.2"
   },
   "devDependencies": {
-    "cssnano": "^4.1.10"
+    "@types/jquery": "^3.3.31",
+    "@types/ol": "^5.3.6",
+    "@types/proj4": "^2.5.0",
+    "cssnano": "^4.1.10",
+    "jquery": "^3.4.1",
+    "typescript": "^3.7.2"
   }
 }
