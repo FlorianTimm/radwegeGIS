@@ -52,7 +52,7 @@ export default class Karte extends Map {
             visible: false,
             source: new TileWMS({
                 url: 'https://geodienste.hamburg.de/HH_WMS_DOP_hochaufloesend?',
-                params: { 'LAYERS': 'DOP5', 'TILED': true },
+                params: { 'LAYERS': 'dop_hochaufloesend', 'TILED': true },
                 serverType: 'geoserver',
                 // Countries have transparency, so do not fade tiles:
                 transition: 0
@@ -132,6 +132,9 @@ export default class Karte extends Map {
                         break;
                     case "Radweg, benutzungspflichtig":
                         color = 'rgb(20,20,240)';
+                        break;
+                    case "Radweg":
+                        color = 'rgb(20,130,240)';
                         break;
                 }
                 return new Style({
