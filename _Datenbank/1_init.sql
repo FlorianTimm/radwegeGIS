@@ -198,6 +198,7 @@ CREATE OR REPLACE FUNCTION radverkehr.history() RETURNS TRIGGER AS
 $func$
     BEGIN
         IF (TG_OP = 'DELETE') THEN
+			DELETE FROM radverkehr.v_radweg_route WHERE v_radweg_route.radweg_id = OLD.radweg_id;
             INSERT INTO radverkehr.o_radweg_history SELECT uuid_generate_v1(), 'D', now(), current_user, OLD.*;
 			RETURN OLD;
         ELSIF (TG_OP = 'UPDATE') THEN
@@ -207,7 +208,7 @@ $func$
         ELSIF (TG_OP = 'INSERT') THEN
 			NEW.create_date = now();
 			NEW.create_user = current_user;
-            NEW.update_date = now();
+            		NEW.update_date = now();
 			NEW.update_user = current_user;
         END IF;
         RETURN NEW;
