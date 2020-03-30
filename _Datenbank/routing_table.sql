@@ -12,6 +12,12 @@ CREATE OR REPLACE FUNCTION radverkehr.refresh_routing() RETURNS void AS $$
 
 		select pgr_createTopology('radverkehr.routing', 0.1,'geometrie' , 'id' ,'source' ,'target', 'true', true);
 		select pgr_analyzeGraph('radverkehr.routing', 0.1,'geometrie' , 'id' ,'source' ,'target', 'true');
+		select pgr_analyzeOneway('radverkehr.routing',
+			ARRAY['c1f220bf-7def-11e9-a7aa-02004c4f4f50'],
+			ARRAY['c1efbe7e-7def-11e9-a7a8-02004c4f4f50', 'c1f220bf-7def-11e9-a7aa-02004c4f4f50'],
+			ARRAY['c1efbe7e-7def-11e9-a7a8-02004c4f4f50', 'c1f220bf-7def-11e9-a7aa-02004c4f4f50'],
+			ARRAY['c1f220bf-7def-11e9-a7aa-02004c4f4f50'],
+			oneway:='richtung_id');
 	END;
 $$ LANGUAGE plpgsql;
 
