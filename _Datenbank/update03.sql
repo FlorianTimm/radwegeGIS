@@ -36,10 +36,10 @@ alter table radverkehr.kt_oberflaeche add column geschwindigkeit integer default
 alter table radverkehr.kt_radweg_art add column sicherheit numeric(3,2) default 1.0;
 alter table radverkehr.kt_radweg_art add column max_geschwindigkeit integer default 30;
 
-alter table radverkehr.routing_vertices_pgr add column geprueft boolean default false;
+alter table radverkehr.routing_vertices_pgr add column status smallint default 0;
 create table radverkehr.sackgassen as select cnt, chk, ein, eout, the_geom
 	from radverkehr.routing_vertices_pgr 
-	where geprueft = true;
+	where status = 1;
 
 CREATE OR REPLACE FUNCTION radverkehr.refresh_routing() RETURNS void AS $$
 	BEGIN

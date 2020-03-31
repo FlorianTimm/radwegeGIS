@@ -1,7 +1,9 @@
+--select radverkehr.update_harburg();
+
 insert into radverkehr.sackgassen (cnt, chk, ein, eout, the_geom)
 	select cnt, chk, ein, eout, the_geom
 	from radverkehr.routing_vertices_pgr 
-	where geprueft = true;
+	where status = 1;
 	
 truncate radverkehr.routing;
 truncate radverkehr.routing_vertices_pgr;
@@ -75,7 +77,8 @@ select pgr_analyzeOneway('radverkehr.routing',
 	ARRAY['c1f220bf-7def-11e9-a7aa-02004c4f4f50'],
 	oneway:='richtung_id');
 	
-delete from radverkehr.routing_vertices_pgr where id in (
+	
+update radverkehr.routing_vertices_pgr set status = 2 where id in (
  select k.id from radverkehr.sackgassen s
 	left join radverkehr.routing_vertices_pgr k
 	on 
@@ -83,6 +86,6 @@ delete from radverkehr.routing_vertices_pgr where id in (
 	s.chk = k.chk and
 	s.ein = k.ein and
 	s.eout = k.eout and
-	k.the_geom = s.the_geom);
-	
-select '';
+	k.the_geom = s.the_geom where k.id is not null);
+
+select 'fertig' status;
