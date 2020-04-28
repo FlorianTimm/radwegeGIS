@@ -60,7 +60,7 @@ select
 	-1.0 zeit_out
 	from (
 		select *, st_length(geometrie) len_in from radverkehr.o_radweg 
-		where ST_intersects(geometrie, (select st_buffer(st_union(geom),250) from bezirke.stadtteile where stadtteil in ('Harburg','Wilstorf','Neuland','Gut Moor', 'Eißendorf')))
+		where ST_intersects(geometrie, (select st_buffer(st_union(geom),50) from bezirke.bezirke where bezirk = '7'))
 	) w 
 		left join radverkehr.kt_oberflaeche o on w.oberflaeche_id = o.oberflaeche_id
 		left join radverkehr.kt_radweg_art a on w.radweg_art_id = a.radweg_art_id;

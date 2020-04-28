@@ -206,6 +206,14 @@ $func$
 			NEW.update_date = now();
 			NEW.update_user = current_user;
         ELSIF (TG_OP = 'INSERT') THEN
+			IF (NEW.name_id IS NULL) THEN 
+				NEW.name_id = (select k.name_id from (
+					select strassenname from (
+						select strassenname, ST_Length(ST_Intersection(s.geom, NEW.geometrie))/ST_Length(NEW.geometrie) len from 
+						radverkehr.strassenname_area s where ST_Intersects(s.geom, NEW.geometrie)
+					) i group by strassenname having sum(len) > 0.5
+				) r inner join radverkehr.kt_strassenname k on r.strassenname = k.bezeichnung);
+			END IF;
 			NEW.create_date = now();
 			NEW.create_user = current_user;
             		NEW.update_date = now();
