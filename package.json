@@ -40,7 +40,7 @@
     "@types/ol": "^5.3.6",
     "@types/proj4": "^2.5.0",
     "cssnano": "^4.1.10",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "typescript": "^3.7.2"
   }
 }
