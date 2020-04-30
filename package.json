@@ -31,16 +31,16 @@
     "core-js": "^3.4.5",
     "jquery-ui": "^1.12.1",
     "jquery-ui-bundle": "^1.12.1-migrate",
-    "ol": "^6.1.1",
+    "ol": "^6.3.1",
     "proj4": "^2.6.0",
     "regenerator-runtime": "^0.13.2"
   },
   "devDependencies": {
-    "@types/jquery": "^3.3.31",
-    "@types/ol": "^5.3.6",
+    "@types/jquery": "^3.3.36",
+    "@types/ol": "^6.3.1",
     "@types/proj4": "^2.5.0",
     "cssnano": "^4.1.10",
-    "jquery": "^3.4.1",
-    "typescript": "^3.7.2"
+    "jquery": "^3.5.0",
+    "typescript": "^3.8.3"
   }
 }
